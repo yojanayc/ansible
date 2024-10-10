@@ -1,10 +1,10 @@
 - name: variables
-  hosts: localhost
+  hosts: web
   vars: #variable declaration
     name: Yojana
-    course: enrolled to DevOps
+    course: AWS DevOps
     website: JoinDevops
   tasks:
   - name: print information
     ansible.builtin.debug:
-      msg: "Hi, I am {{name}}, Currently I am {{course}} from {{website}}."
+      msg: "Hi, I am {{name}}, Currently I am  learning {{course}} course from {{website}}."
