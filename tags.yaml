@@ -1,34 +1,18 @@
-# - name: Install packages
-#   hosts: all
-#   become: yes  # Use this if you need sudo privileges
-#   tasks:
-#     - name: Install MySQL
-#       ansible.builtin.package: 
-#         name: mysql-server  # Use 'mysql-server' for installation on Debian/Ubuntu
-#         state: present
-#       tags: db
-
-#     - name: Start MySQL service
-#       service:
-#         name: mysql-server  # Use 'mysqld' if that's the service name on your system
-#         state: started
-#       tags: start
-
-
-- name: Install packages
-  hosts: all
+- name: Install and run mysql package
+  hosts: webservers
   become: yes
   tasks:
-      - name: Install MySQL
-        ansible.builtin.package:
-          name: mysql
-          state: present
-        tags: db
-
-      - name: Start MySQL service
-        service:
-          name: mysql  # Change to 'mysqld' if you're on CentOS/RHEL
-          state: started
-          enabled: yes
-        tags:
-          - mysql_service
+    - name: Install MySQL package
+      yum: 
+        name: mysql-server
+        state: present
+      tags: 
+      - mysql_install 
+ 
+    - name: Start MySQL service
+      systemd: 
+        name: mysqld
+        state: started
+        enabled: yes
+      tags: 
+      - mysql_start
