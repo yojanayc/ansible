@@ -1,25 +1,16 @@
-- name: Install Packages
+- name: Install MySQL Packages
   hosts: web
-  become: yes  
+  become: yes  # Use this if you need sudo privileges
   tasks:
-  - name: Install a package using yum
-    yum:
-      name: package_name
-      state: present
-  - name: Install MySQL server
-      yum:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+      tags: update
+
+    - name: Install MySQL server
+      ansible.builtin.apt:
         name: mysql-server
         state: present
-      tags: install  # Tag this task as 'install'
+      tags: mysql
 
-  - name: Start MySQL service
-      service:
-        name: mysql
-        state: started
-      tags: start  # Tag this task as 'start'
-
-  - name: Create a new database
-      mysql_db:
-        name: my_database
-        state: present
-      tags: db_setup  # Tag this task as 'db_setup'
+    
