@@ -1,0 +1,10 @@
+- name: variables
+  hosts: localhost
+  vars: #variable declaration
+    name: Yojana
+    course: enrolled to DevOps
+    website: JoinDevops
+  tasks:
+  - name: print information
+    ansible.builtin.debug:
+      msg: "Hi, I am {{name}}, Currently I am {{course}} from {{website}}."
