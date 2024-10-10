@@ -7,7 +7,7 @@
       name: package_name
       state: present
   - name: Install MySQL server
-      apt:
+      yum:
         name: mysql-server
         state: present
       tags: install  # Tag this task as 'install'
