@@ -2,6 +2,10 @@
   hosts: web
   become: yes  
   tasks:
+  - name: Install a package using yum
+    yum:
+      name: package_name
+      state: present
     - name: Install MySQL server
       apt:
         name: mysql-server
