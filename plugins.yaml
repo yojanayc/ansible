@@ -1,0 +1,10 @@
+- hosts: localhost
+  tasks:
+    - name: Print Hello
+      debug:
+        msg: "Hello, World!"
+
+    - name: Print Goodbye
+      debug:
+        msg: "Goodbye, World!
+        
