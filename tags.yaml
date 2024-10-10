@@ -24,3 +24,11 @@
           name: mysql
           state: present
         tags: database
+
+      - name: Start MySQL service
+      service:
+        name: mysql  # Use 'mysqld' for CentOS/RHEL
+        state: started
+        enabled: yes
+      tags:
+        - mysql_service  
