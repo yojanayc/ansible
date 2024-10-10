@@ -1,5 +1,5 @@
 - name: install nginx
-  hosts: web
+  hosts: loaclhost
   become: yes
   tasks:
   - name: install nginx
