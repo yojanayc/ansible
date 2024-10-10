@@ -3,13 +3,13 @@
   become: yes  # Use this if you need sudo privileges
   tasks:
     - name: Install MySQL
-      ansible.builtin.package:
+      ansible.builtin.package: 
         name: mysql-server  # Use 'mysql-server' for installation on Debian/Ubuntu
         state: present
       tags: db
 
-- name: Start MySQL service
-  service:
-    name: mysql  # Use 'mysqld' if that's the service name on your system
-    state: started
-  tags: start
+    - name: Start MySQL service
+      service:
+        name: mysql  # Use 'mysqld' if that's the service name on your system
+        state: started
+      tags: start
